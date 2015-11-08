@@ -39,7 +39,7 @@ class DatasetGenerator(fields: List[DataField], rows: Int, filename: String) {
 
 }
 
-object DatasetGenerator extends App {
+object DatasetGenerator {
 
   def apply(fields: List[DataField], rows: Int, filename: String) = {
     val generator = new DatasetGenerator(fields, rows, filename)

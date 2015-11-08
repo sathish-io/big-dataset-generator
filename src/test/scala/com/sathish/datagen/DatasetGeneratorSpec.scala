@@ -21,6 +21,15 @@ class DatasetGeneratorSpec extends FlatSpec with Matchers {
     assert(10 == text.length)
   }
 
+  it should "seq number field" in {
+    val counter = SeqNumberField("counter", 100)
+    assert(100 == counter.nextValue)
+    assert(101 == counter.nextValue)
+    assert(102 == counter.nextValue)
+    assert(103 == counter.nextValue)
+    assert(104 == counter.nextValue)
+  }
+
   it should "create new file" in {
     val file = "file1.txt"
     val rows = 10

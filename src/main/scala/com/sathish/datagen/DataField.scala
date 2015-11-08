@@ -12,6 +12,14 @@ class NumericField(val id: String, min: Long, max: Long) extends DataField {
   override def nextValue: Long = min + (nextDouble * (max - min)).toLong
 }
 
+class SeqNumberField(val id: String, start: Long) extends DataField {
+  var current = start - 1
+  override def nextValue: Long = {
+    current += 1
+    current
+  }
+}
+
 class DecimalField(val id: String, min: Double, max: Double, formatter: DecimalFormat) extends DataField {
   override def nextValue: Any = formatter.format(min + nextDouble * (max - min))
 }
@@ -77,4 +85,11 @@ object DateField {
   def / = format append "/"
   def - = format append "-"
 
+}
+
+object SeqNumberField {
+  def apply(id: String, start: Long) = {
+    val field = new SeqNumberField(id, start)
+    field
+  }
 }
