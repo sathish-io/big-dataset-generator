@@ -5,11 +5,12 @@ Scala based tool to generate sample datasets for big data applications
 
 ### Example
 To Generate a text file(CSV format) with name 'file1.txt' with 10 records with following columns,
-txn_id - random number between 10000 and 20000
-amount - $ amount between 1.00 and 100.00 with 2 decimal places
-desc - random text of lenght 10
-txn_date - random date(in MM-DD-YYYY format) between Jan-01-2014 and Dec-3102014
+* txn_id - random number between 10000 and 20000
+* amount - $ amount between 1.00 and 100.00 with 2 decimal places
+* desc - random text of lenght 10
+* txn_date - random date(in MM-DD-YYYY format) between Jan-01-2014 and Dec-3102014
 
+```
 val file = "file1.txt"
 val rows = 10
 DatasetGenerator(
@@ -22,3 +23,4 @@ DatasetGenerator(
   rows,
   file
 ) generate
+```
