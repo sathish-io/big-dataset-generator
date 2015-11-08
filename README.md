@@ -3,7 +3,15 @@ Scala based tool to generate sample datasets for big data applications
 
 ## Usage
 
-## Supported data types,
+Make sure to install SBT/Activator first. Edit file MainApp.scala based on data set that you wanted to generate, and run,
+
+```
+sbt run
+```
+If you are using activator then run 'activator run'
+
+
+## Supported data types
 
 ```
 1. SeqNumberField(id: String, start: Long)
