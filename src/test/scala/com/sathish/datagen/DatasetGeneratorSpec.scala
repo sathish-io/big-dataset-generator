@@ -7,13 +7,20 @@ import scala.io.Source
 class DatasetGeneratorSpec extends FlatSpec with Matchers {
 
   "A DatasetGenerator" should "numeric field in the rage" in {
-    val field1 = NumericField("txn_id", 10000, 20000).nextValue
-    assert(field1 > 10000  && field1 < 20000)
+    val field1 = NumericField("txn_id", 10000, 20000)
+    val num1 = field1.nextValue
+    assert(num1 > field1.min && num1 < field1.max)
   }
 
   it should "date field in the range" in {
-    val randomDate = DateField("txn_date", "06-01-2015", "06-30-2015", "mm-dd-YYYY").nextValue
-    //TODO:: check the results
+    val field = DateTimeField("txn_date", "06-01-2015", "06-30-2015", "mm-dd-YYYY")
+    val date1 = field.nextValue
+    assert(date1.getTime >= field.min && date1.getTime <= field.max)
+  }
+
+  it should "decimal field in the range" in {
+    val field = DecimalField("amount", 0.0, 1.0, 2, "$")
+    val amount1 = field.nextValue
   }
 
   it should "text field of correct length" in {
@@ -38,7 +45,7 @@ class DatasetGeneratorSpec extends FlatSpec with Matchers {
         NumericField("txn_id", 10000, 20000),
         DecimalField("amount", 1, 100, 2, "$"),
         TextField("desc", 10),
-        DateField("txn_date", "01-01-2014", "12-31-2014", "MM-dd-yyyy")
+        DateTimeField("txn_date", "01-01-2014", "12-31-2014", "MM-dd-yyyy")
       ),
       rows,
       file

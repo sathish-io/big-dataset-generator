@@ -18,7 +18,7 @@ If you are using activator then run 'activator run'
 2. NumericField(id: String, min: Long, max: Long)
 3. DecimalField(id: String, min: Double, max: Double, precision: Int, currency: String)
 4. TextField(id: String, lenght: Int)
-5. DateField(id: String, min: String, max: String, format: String)
+5. DateTimeField(id: String, min: String, max: String, format: String)
 ````
 
 ### Example
@@ -38,7 +38,7 @@ DatasetGenerator(
     NumericField("acct_num", 50000, 60000),
     DecimalField("amount", 1, 100, 2, "$"),
     TextField("desc", 10),
-    DateField("txn_date", "01-01-2014", "12-31-2014", "MM-dd-yyyy")
+    DateTimeField("txn_date", "01-01-2014", "12-31-2014", "MM-dd-yyyy")
   ),
   rows,
   file

@@ -25,9 +25,9 @@ class DatasetGenerator(fields: List[DataField], rows: Int, filename: String) {
     def appendColumns(fields: List[DataField], record: StringBuilder): String = {
       fields match {
         case Nil => record.toString
-        case x::tail => {
-          record.append(x.nextValue)
-          if(tail != Nil) {
+        case x :: tail => {
+          record.append(x.format(x.nextValue))
+          if (tail != Nil) {
             record.append(",")
           }
           appendColumns(tail, record)
